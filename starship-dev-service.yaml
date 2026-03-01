@@ -10,7 +10,7 @@ metadata:
 
 spec:
 
-  type: LoadBalancer
+  type: ClusterIP
 
   selector:
     app: starship-dev
