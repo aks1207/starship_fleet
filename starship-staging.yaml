@@ -21,7 +21,7 @@ spec:
 
       - name: starship
 
-        image: starshipfleetacr.azurecr.io/starship-fleet:latest
+        image: solarsystemacr.azurecr.io/starship-fleet:latest
 
         ports:
         - containerPort: 8000
