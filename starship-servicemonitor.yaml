@@ -4,6 +4,8 @@ kind: ServiceMonitor
 metadata:
   name: starship-monitor
   namespace: monitoring
+  labels:
+    release:dev-monitoring
 
 spec:
 
