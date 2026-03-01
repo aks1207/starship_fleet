@@ -1,5 +1,7 @@
+import asyncio
 import json
 import os
+import random
 import socket
 import time
 from pathlib import Path
@@ -73,6 +75,7 @@ async def index():
 
 @app.post("/starship")
 async def get_starship(payload: StarshipRequest):
+    await asyncio.sleep(random.uniform(1, 5))
     starship = next((s for s in starships_data if s["id"] == payload.id), None)
     if starship:
         starship_requests_counter.labels(starship_name=starship["name"]).inc()
@@ -113,9 +116,9 @@ async def api_docs():
 
 
 # Mount static files (CSS, JS, images) after route definitions
-app.mount("/static", StaticFiles(directory=Path(__file__).parent), name="static")
+app.mount("/", StaticFiles(directory=Path(__file__).parent), name="static")
 
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("app:app", host="0.0.0.0", port=3000, reload=True)
+    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
