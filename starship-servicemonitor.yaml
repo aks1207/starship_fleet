@@ -11,7 +11,7 @@ spec:
 
   selector:
     matchLabels:
-      app: starship-dev
+      env : dev
 
   namespaceSelector:
     matchNames:
